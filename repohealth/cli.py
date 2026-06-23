@@ -30,6 +30,8 @@ def analyze(repo_url: str, limit: int = 10):
             typer.echo(f"   Commits: {item['commits']}")
             typer.echo(f"   Autores: {item['authors']}")
             typer.echo(f"   Commits de correção: {item['bugfix_commits']}")
+            typer.echo(f"   Linhas: {item['lines']}")
+            typer.echo(f"   Complexidade: {item['complexity']}")
             typer.echo(f"   Score: {item['score']}")
             typer.echo(f"   Risco: {item['risk']}")
             typer.echo("")
