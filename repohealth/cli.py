@@ -16,7 +16,20 @@ def analyze(repo_url: str):
     typer.echo("Analisando histórico de commits...")
     result = analyze_repository(temp_dir)
 
-    typer.echo(f"Arquivos analisados: {len(result)}")
+    if not result:
+        typer.echo("Nenhum arquivo foi encontrado para análise.")
+        return
+
+    typer.echo("\nRanking de arquivos com maior risco de manutenção:\n")
+
+    for index, item in enumerate(result, start=1):
+        typer.echo(f"{index}. {item['file']}")
+        typer.echo(f"   Commits: {item['commits']}")
+        typer.echo(f"   Autores: {item['authors']}")
+        typer.echo(f"   Commits de correção: {item['bugfix_commits']}")
+        typer.echo(f"   Score: {item['score']}")
+        typer.echo(f"   Risco: {item['risk']}")
+        typer.echo("")
 
 
 if __name__ == "__main__":
