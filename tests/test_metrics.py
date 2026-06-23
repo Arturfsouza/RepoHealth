@@ -1,3 +1,4 @@
+import pytest
 from repohealth.metrics import calculate_risk_score, is_bugfix_commit
 
 def test_is_bugfix_commit_without_bug_keyword():
@@ -19,3 +20,7 @@ def test_calculate_risk_score():
 
 def test_calculate_risk_score_with_zero_values():
     assert calculate_risk_score(commits=0, authors=0, bugfix_commits=0) == 0
+
+def test_calculate_risk_score_with_negative_value():
+    with pytest.raises(ValueError):
+        calculate_risk_score(commits=-1, authors=1, bugfix_commits=0)
