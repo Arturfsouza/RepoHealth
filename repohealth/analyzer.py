@@ -45,7 +45,9 @@ def analyze_repository(repo_path: str) -> list[dict]:
         score = calculate_risk_score(
             commits=data["commits"],
             authors=authors_count,
-            bugfix_commits=data["bugfix_commits"]
+            bugfix_commits=data["bugfix_commits"],
+            lines=lines,
+            complexity=complexity
         )
 
         result.append({
