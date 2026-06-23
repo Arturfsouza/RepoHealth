@@ -8,6 +8,9 @@ def create_temp_dir() -> str:
 
 
 def clone_repository(repo_url: str, destination: str) -> str:
+    if not repo_url:
+        raise ValueError("A URL do repositório não pode estar vazia.")
+
     Repo.clone_from(repo_url, destination)
 
     return destination
