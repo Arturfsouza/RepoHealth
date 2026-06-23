@@ -16,3 +16,6 @@ def test_is_bugfix_commit_with_empty_message():
 
 def test_calculate_risk_score():
     assert calculate_risk_score(commits=10, authors=2, bugfix_commits=3) == 38
+
+def test_calculate_risk_score_with_zero_values():
+    assert calculate_risk_score(commits=0, authors=0, bugfix_commits=0) == 0
