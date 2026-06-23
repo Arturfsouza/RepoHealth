@@ -18,6 +18,10 @@ def analyze_repository(repo_path: str) -> list[dict]:
     })
 
     for commit in Repository(repo_path).traverse_commits():
-        _ = commit
+        for modified_file in commit.modified_files:
+            file_path = modified_file.new_path or modified_file.old_path
+
+            if not file_path:
+                continue
 
     return []
