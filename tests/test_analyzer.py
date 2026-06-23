@@ -12,3 +12,7 @@ def test_analyze_repository_returns_list_for_basic_call(tmp_path):
 def test_analyze_repository_with_empty_path():
     with pytest.raises(ValueError):
         analyze_repository("")
+
+def test_analyze_repository_with_invalid_path():
+    with pytest.raises(FileNotFoundError):
+        analyze_repository("invalid/path/to/repository")
