@@ -27,5 +27,7 @@ def analyze_repository(repo_path: str) -> list[dict]:
 
             files_data[file_path]["commits"] += 1
             files_data[file_path]["authors"].add(commit.author.name)
+            if commit_is_bugfix:
+                files_data[file_path]["bugfix_commits"] += 1
 
     return []
