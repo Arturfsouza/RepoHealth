@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from repohealth.git_utils import clone_repository, create_temp_dir
+from repohealth.git_utils import clone_repository, create_temp_dir, is_git_repository
 
 
 def test_create_temp_dir_creates_directory():
@@ -18,3 +18,6 @@ def test_clone_repository_with_empty_url(tmp_path):
 def test_clone_repository_with_empty_destination():
     with pytest.raises(ValueError):
         clone_repository("https://github.com/example/repo.git", "")
+
+def test_is_git_repository_false_for_normal_folder(tmp_path):
+    assert is_git_repository(str(tmp_path)) is False
