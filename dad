@@ -1,0 +1,20 @@
+[33m981fe0e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Adiciona teste para risco alto
+[33mc1125fe[m Adiciona teste para risco médio
+[33m2dc22c6[m Adiciona teste para risco baixo
+[33m44192ad[m Adiciona classificação de risco
+[33m87b05da[m Adiciona teste para métricas negativas
+[33m9c684f1[m Valida métricas negativas no score
+[33mb80ad30[m Adiciona teste para score zerado
+[33mcb8bb78[m Adiciona teste para cálculo de score
+[33m2d4b7c8[m Adiciona cálculo de score de risco
+[33mf4ea9ea[m Adiciona teste para mensagem de commit vazia
+[33mdce346f[m Adiciona teste para commit com bug
+[33m0e6ba9b[m Identifica commits com palavra bug
+[33m3d6f61a[m Adiciona teste para commit com fix
+[33mc49e77f[m Identifica commits com palavra fix
+[33m67a3a03[m Adiciona primeiro teste de métrica
+[33m655ef43[m Cria módulo inicial de métricas
+[33ma9e477f[m Configura projeto Python e pytest
+[33m69153d3[m Adiciona dependências principais
+[33m0f00ee3[m Cria estrutura base da ferramenta
+[33m941d344[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Create README.md

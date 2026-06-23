@@ -14,3 +14,7 @@ def test_create_temp_dir_creates_directory():
 def test_clone_repository_with_empty_url(tmp_path):
     with pytest.raises(ValueError):
         clone_repository("", str(tmp_path))
+
+def test_clone_repository_with_empty_destination():
+    with pytest.raises(ValueError):
+        clone_repository("https://github.com/example/repo.git", "")

@@ -17,3 +17,4 @@ def clone_repository(repo_url: str, destination: str) -> str:
     Repo.clone_from(repo_url, destination)
 
     return destination
+
