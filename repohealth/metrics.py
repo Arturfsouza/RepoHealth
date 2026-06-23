@@ -3,8 +3,9 @@ def is_bugfix_commit(message: str) -> bool:
         return False
 
     message_lower = message.lower()
+    keywords = ["fix", "bug", "error"]
 
-    return "fix" in message_lower or "bug" in message_lower
+    return any(keyword in message_lower for keyword in keywords)
 
 
 def calculate_risk_score(commits: int, authors: int, bugfix_commits: int) -> int:
