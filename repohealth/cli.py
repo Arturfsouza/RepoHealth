@@ -7,7 +7,7 @@ app = typer.Typer(help="RepoHealth - análise de risco de manutenção em reposi
 
 
 @app.command()
-def analyze(repo_url: str):
+def analyze(repo_url: str, limit: int = 10):
     temp_dir = create_temp_dir()
 
     typer.echo("Clonando repositório...")
@@ -22,7 +22,7 @@ def analyze(repo_url: str):
 
     typer.echo("\nRanking de arquivos com maior risco de manutenção:\n")
 
-    for index, item in enumerate(result, start=1):
+    for index, item in enumerate(result[:limit], start=1):
         typer.echo(f"{index}. {item['file']}")
         typer.echo(f"   Commits: {item['commits']}")
         typer.echo(f"   Autores: {item['authors']}")
