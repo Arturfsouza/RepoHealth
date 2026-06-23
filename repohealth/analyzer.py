@@ -3,7 +3,7 @@ from pathlib import Path
 
 from pydriller import Repository
 
-from repohealth.metrics import is_bugfix_commit
+from repohealth.metrics import calculate_risk_score, classify_risk, is_bugfix_commit
 
 
 def analyze_repository(repo_path: str) -> list[dict]:
@@ -37,11 +37,20 @@ def analyze_repository(repo_path: str) -> list[dict]:
     result = []
 
     for file_path, data in files_data.items():
+        authors_count = len(data["authors"])
+        score = calculate_risk_score(
+            commits=data["commits"],
+            authors=authors_count,
+            bugfix_commits=data["bugfix_commits"]
+        )
+
         result.append({
             "file": file_path,
             "commits": data["commits"],
-            "authors": len(data["authors"]),
-            "bugfix_commits": data["bugfix_commits"]
+            "authors": authors_count,
+            "bugfix_commits": data["bugfix_commits"],
+            "score": score,
+            "risk": classify_risk(score)
         })
 
     return result
