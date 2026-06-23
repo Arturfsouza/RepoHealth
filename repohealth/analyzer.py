@@ -24,4 +24,6 @@ def analyze_repository(repo_path: str) -> list[dict]:
             if not file_path:
                 continue
 
+            files_data[file_path]["commits"] += 1
+
     return []
