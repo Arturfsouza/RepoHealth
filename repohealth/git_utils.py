@@ -1,2 +1,5 @@
+import tempfile
+
+
 def create_temp_dir() -> str:
-    return ""
+    return tempfile.mkdtemp(prefix="repohealth_")
