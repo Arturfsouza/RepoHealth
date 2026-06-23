@@ -11,3 +11,6 @@ def test_is_bugfix_commit_with_fix_keyword():
 
 def test_is_bugfix_commit_with_bug_keyword():
     assert is_bugfix_commit("bug in payment service") is True
+
+def test_is_bugfix_commit_with_empty_message():
+    assert is_bugfix_commit("") is False
