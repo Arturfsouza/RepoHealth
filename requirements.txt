@@ -1,0 +1,4 @@
+typer
+pydriller
+gitpython
+pytest
