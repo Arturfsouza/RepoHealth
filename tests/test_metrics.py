@@ -33,3 +33,6 @@ def test_classify_medium_risk():
 
 def test_classify_high_risk():
     assert classify_risk(50) == "Alto"
+
+def test_is_bugfix_commit_with_error_keyword():
+    assert is_bugfix_commit("error when loading page") is True
