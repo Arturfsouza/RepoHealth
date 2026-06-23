@@ -1,0 +1,9 @@
+[project]
+name = "repohealth"
+version = "0.1.0"
+description = "CLI para mineração de repositórios Git e identificação de arquivos com risco de manutenção"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
