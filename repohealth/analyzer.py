@@ -17,4 +17,7 @@ def analyze_repository(repo_path: str) -> list[dict]:
         "bugfix_commits": 0
     })
 
+    for commit in Repository(repo_path).traverse_commits():
+        _ = commit
+
     return []
