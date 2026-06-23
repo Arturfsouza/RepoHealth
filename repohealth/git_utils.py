@@ -1,4 +1,5 @@
 import tempfile
+from pathlib import Path
 
 from git import Repo
 
@@ -18,3 +19,11 @@ def clone_repository(repo_url: str, destination: str) -> str:
 
     return destination
 
+
+def is_git_repository(path: str) -> bool:
+    if not path:
+        return False
+
+    git_folder = Path(path) / ".git"
+
+    return git_folder.exists()
