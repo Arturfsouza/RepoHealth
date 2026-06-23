@@ -27,3 +27,6 @@ def test_calculate_risk_score_with_negative_value():
 
 def test_classify_low_risk():
     assert classify_risk(10) == "Baixo"
+
+def test_classify_medium_risk():
+    assert classify_risk(20) == "Médio"
