@@ -27,3 +27,4 @@ def test_is_git_repository_true_when_git_folder_exists(tmp_path):
     git_folder.mkdir()
 
     assert is_git_repository(str(tmp_path)) is True
+
