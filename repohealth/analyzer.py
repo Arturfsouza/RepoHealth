@@ -1,5 +1,7 @@
 from pathlib import Path
 
+from pydriller import Repository
+
 
 def analyze_repository(repo_path: str) -> list[dict]:
     if not repo_path:
