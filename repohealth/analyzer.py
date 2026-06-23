@@ -1,7 +1,9 @@
 from collections import defaultdict
 from pathlib import Path
-from repohealth.metrics import is_bugfix_commit
+
 from pydriller import Repository
+
+from repohealth.metrics import is_bugfix_commit
 
 
 def analyze_repository(repo_path: str) -> list[dict]:
@@ -19,6 +21,7 @@ def analyze_repository(repo_path: str) -> list[dict]:
 
     for commit in Repository(repo_path).traverse_commits():
         commit_is_bugfix = is_bugfix_commit(commit.msg)
+
         for modified_file in commit.modified_files:
             file_path = modified_file.new_path or modified_file.old_path
 
@@ -27,7 +30,18 @@ def analyze_repository(repo_path: str) -> list[dict]:
 
             files_data[file_path]["commits"] += 1
             files_data[file_path]["authors"].add(commit.author.name)
+
             if commit_is_bugfix:
                 files_data[file_path]["bugfix_commits"] += 1
 
-    return []
+    result = []
+
+    for file_path, data in files_data.items():
+        result.append({
+            "file": file_path,
+            "commits": data["commits"],
+            "authors": len(data["authors"]),
+            "bugfix_commits": data["bugfix_commits"]
+        })
+
+    return result
