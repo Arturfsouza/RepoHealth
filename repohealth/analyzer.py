@@ -53,4 +53,4 @@ def analyze_repository(repo_path: str) -> list[dict]:
             "risk": classify_risk(score)
         })
 
-    return result
+    return sorted(result, key=lambda item: item["score"], reverse=True)
