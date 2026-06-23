@@ -1,2 +1,5 @@
 def is_bugfix_commit(message: str) -> bool:
-    return False
+    if not message:
+        return False
+
+    return "fix" in message.lower()
