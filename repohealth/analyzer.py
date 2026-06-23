@@ -25,5 +25,6 @@ def analyze_repository(repo_path: str) -> list[dict]:
                 continue
 
             files_data[file_path]["commits"] += 1
+            files_data[file_path]["authors"].add(commit.author.name)
 
     return []
