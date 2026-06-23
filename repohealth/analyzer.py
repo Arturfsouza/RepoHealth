@@ -2,7 +2,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from pydriller import Repository
-
+from repohealth.code_metrics import calculate_complexity, count_lines
 from repohealth.metrics import calculate_risk_score, classify_risk, is_bugfix_commit
 
 
@@ -38,6 +38,10 @@ def analyze_repository(repo_path: str) -> list[dict]:
 
     for file_path, data in files_data.items():
         authors_count = len(data["authors"])
+        absolute_file_path = Path(repo_path) / file_path
+        lines = count_lines(str(absolute_file_path))
+        complexity = calculate_complexity(str(absolute_file_path))
+
         score = calculate_risk_score(
             commits=data["commits"],
             authors=authors_count,
@@ -49,6 +53,8 @@ def analyze_repository(repo_path: str) -> list[dict]:
             "commits": data["commits"],
             "authors": authors_count,
             "bugfix_commits": data["bugfix_commits"],
+            "lines": lines,
+            "complexity": complexity,
             "score": score,
             "risk": classify_risk(score)
         })
