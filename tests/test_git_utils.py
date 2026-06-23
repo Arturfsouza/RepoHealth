@@ -21,3 +21,9 @@ def test_clone_repository_with_empty_destination():
 
 def test_is_git_repository_false_for_normal_folder(tmp_path):
     assert is_git_repository(str(tmp_path)) is False
+
+def test_is_git_repository_true_when_git_folder_exists(tmp_path):
+    git_folder = tmp_path / ".git"
+    git_folder.mkdir()
+
+    assert is_git_repository(str(tmp_path)) is True
