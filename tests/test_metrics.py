@@ -30,3 +30,6 @@ def test_classify_low_risk():
 
 def test_classify_medium_risk():
     assert classify_risk(20) == "Médio"
+
+def test_classify_high_risk():
+    assert classify_risk(50) == "Alto"
